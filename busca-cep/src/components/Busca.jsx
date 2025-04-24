@@ -4,22 +4,39 @@ import { Button } from 'primereact/button'
 import { IconField } from 'primereact/iconfield'
 import { InputIcon } from 'primereact/inputicon'
 import { InputText } from 'primereact/inputtext'
+import axios from 'axios'
+
 export default class Busca extends Component {
     state = {
         termoDeBusca: ''
     }
 
     onTermoAlterado = (event) => {
-        //atualizar a variável de estado termoDeBusca para que ela armazene aquilo que foi digitado pelo usuário até então
         this.setState({termoDeBusca: event.target.value})
-
+        
     }
 
-    onFormSubmit = (event) => {
+    onFormSubmit = async (event) => {
         event.preventDefault()
-        // ao clicar no botão ok, o termo digitado deve aparecer no console do navegador
-        this.props.onBuscaRealizada(this.state.termoDeBusca)
+        const { termoDeBusca} = this.state
+        if (!termoDeBusca || termoDeBusca.length !== 8 || isNaN(termoDeBusca)) {
+            alert('Por favor, digite um CEP válido com 8 dígitos numéricos.')
+            return
+        }
 
+        try {
+            const viacep = await axios.get(`https://viacep.com.br/ws/${termoDeBusca}/json/`)
+            const data = viacep.data
+
+            if (data.erro) {
+                alert('CEP não encontrado.')
+                return
+            }
+
+            console.log(data)
+        } catch (error) {
+            alert('Erro ao buscar o CEP. Verifique sua conexão ou tente novamente mais tarde.')
+        }
     }
 
     render() {
