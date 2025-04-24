@@ -1,5 +1,6 @@
 import React from 'react'
 import Busca from './components/Busca'
+import LocalidadeLista from './components/LocalidadeLista'
  class App extends React.Component {
  
    onBuscaRealizada = (termo) => {
@@ -14,6 +15,7 @@ import Busca from './components/Busca'
                onBuscaRealizada={this.onBuscaRealizada}/>
            </div>
            <div className="col-12">
+           <LocalidadeLista/>
            </div>
        </div>
      )
