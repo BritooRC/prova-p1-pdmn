@@ -2,11 +2,12 @@ import React from 'react'
 import Busca from './components/Busca'
 import LocalidadeLista from './components/LocalidadeLista'
  class App extends React.Component {
- 
-   onBuscaRealizada = (termo) => {
-     alert(termo)
-   }
- 
+  state = {
+    buscaCep: null
+}
+   onBuscaRealizada = (dados) => {
+     this.setState({ buscaCep: dados})
+   } 
    render(){
      return (
        <div className='grid justify-content-center'>
@@ -15,12 +16,11 @@ import LocalidadeLista from './components/LocalidadeLista'
                onBuscaRealizada={this.onBuscaRealizada}/>
            </div>
            <div className="col-12">
-           <LocalidadeLista/>
+           <LocalidadeLista dados={this.state.buscaCep} />
            </div>
        </div>
      )
    }
  }
-
 export default App
 

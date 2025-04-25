@@ -1,42 +1,32 @@
 import React, { Component } from 'react'
 import {Card} from 'primereact/card'
-
 export default class LocalidadeLista extends Component {
-    card = {
-        cep: '',
-        rua: '',
-        bairro: '',
-        localidade: '',
-        estado: ''
-      }
-    
-      listaCards = [
-        {
-          cep: '04094050',
-          rua: 'Avenida Pedro Álvares Cabral',
-          bairro: 'Parque Ibirapuera',
-          localidade: 'São Paulo',
-          estado: 'SP'
-        },
-        {
-          cep: '55592970',
-          rua: 'Rua dos Navegantes',
-          bairro: 'Vila de Porto de Galinhas',
-          localidade: 'Ipojuca',
-          estado: 'PE'
-        }
-      ]
-    
+  state = {
+    buscaCep: []
+}
+componentDidUpdate(prevProps) {
+  if (this.props.dados && this.props.dados !== prevProps.dados) {
+    this.setState((prevState) => ({
+      
+      buscaCep: [this.props.dados, ...prevState.buscaCep]
+    }))
+  }
+}
       render() {
+        const {buscaCep} = this.state
         return (
           <div className="card-div" style={{ width: '300px', height: '150px' }}>
-            {this.listaCards.map((item, index) => (
-              <Card key={index} title={item.cep} style={{ margin: '50px' }}>
+            <br />
+            {buscaCep.map((item, index) => (
+              
+              <Card key={index} style={{ backgroundColor: 'white',color: 'blue',borderColor:'blue', borderWidth: '1px',borderStyle: 'solid',borderRadius: '15px',padding: '8px 16px',fontSize: '100%',width: '400px', textAlign:'center',  marginBottom: '20px'}}>
                 <div className="card-text">
-                  <p>{item.rua}</p>
+                  <p>{item.cep}</p>
+                  <p>{item.logradouro}</p>
                   <p>{item.bairro}</p>
-                  <p>{item.localidade} - {item.estado}</p>
+                  <p>{item.localidade} - {item.uf}</p>
                 </div>
+               
               </Card>
             ))}
           </div>
