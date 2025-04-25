@@ -19,7 +19,7 @@ componentDidUpdate(prevProps) {
             <br />
             {buscaCep.map((item, index) => (
               
-              <Card key={index} style={{ backgroundColor: 'white',color: 'blue',borderColor:'blue', borderWidth: '1px',borderStyle: 'solid',borderRadius: '15px',padding: '8px 16px',fontSize: '100%',width: '400px', textAlign:'center',  marginBottom: '20px'}}>
+              <Card key={index} style={{ backgroundColor: 'white',color: 'black',borderColor:'blue', borderWidth: '4px',borderStyle: 'solid',borderRadius: '20px',width: '800px', textAlign:'center',  marginBottom: '20px', fontSize: '20px'}}>
                 <div className="card-text">
                   <p>{item.cep}</p>
                   <p>{item.logradouro}</p>

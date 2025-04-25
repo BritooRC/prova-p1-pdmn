@@ -42,7 +42,7 @@ export default class Busca extends Component {
                         <InputIcon className='pi pi-search'></InputIcon>
                         <InputText
                             className='w-full'
-                            style={{ borderRadius: '10px', borderColor: 'blue', borderWidth: '1px', borderStyle: 'solid', fontSize: '30px', padding: '10px', textAlign: 'center', width: '400px' }}
+                            style={{ borderRadius: '10px', borderColor: 'blue', borderWidth: '2px', borderStyle: 'solid', fontSize: '30px', padding: '10px', textAlign: 'center', width: '800px' }}
                             placeholder={this.props.dica}
                             maxLength={8}
                             onChange={this.onTermoAlterado}
@@ -50,7 +50,7 @@ export default class Busca extends Component {
                     </IconField>
                     <br />
                     <Button
-                        style={{ backgroundColor: 'white', color: 'blue', borderColor: 'blue', borderWidth: '1px', borderStyle: 'solid', borderRadius: '15px', padding: '8px 16px', fontSize: '100%', width: '400px' }}
+                        style={{ backgroundColor: 'white', color: 'blue', borderColor: 'blue', borderWidth: '2px', borderStyle: 'solid', borderRadius: '15px', padding: '8px 16px', fontSize: '100%', width: '800px' }}
                         label="OK"
                         outlined />
                 </div>
